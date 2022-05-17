@@ -19,6 +19,8 @@ function SignUp({ url }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const location = useLocation();
   const history = useHistory();
   function Copyright(props) {
@@ -71,6 +73,32 @@ function SignUp({ url }) {
           Sign up
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Grid container>
+            <Grid item xs>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="first name"
+                label="First Name"
+                autoComplete="first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              ></TextField>
+            </Grid>
+            <Grid item xs>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="last name"
+                label="Last Name"
+                autoComplete="last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              ></TextField>
+            </Grid>
+          </Grid>
           <TextField
             margin="normal"
             required
