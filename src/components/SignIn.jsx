@@ -14,7 +14,7 @@ import {
   Avatar,
 } from '@mui/material';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
+import { useUser } from '../hooks/user';
 
 function SignIn({ url }) {
   const { signInUser } = useUser();

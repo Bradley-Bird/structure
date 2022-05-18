@@ -1,5 +1,5 @@
 import { Redirect, Route, useLocation } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
+import { useUser } from '../hooks/user';
 
 function PrivateRoute({ children, ...rest }) {
   const { user } = useUser();

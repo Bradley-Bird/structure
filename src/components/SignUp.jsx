@@ -12,7 +12,7 @@ import {
   Avatar,
 } from '@mui/material';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
+import { useUser } from '../hooks/user';
 
 function SignUp({ url }) {
   const { signUpUser, firstName, setFirstName, lastName, setLastName } =
