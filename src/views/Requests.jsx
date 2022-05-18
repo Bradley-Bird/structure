@@ -1,8 +1,10 @@
+import { CssBaseline } from '@mui/material';
 import React from 'react';
 
 function Requests() {
   return (
     <div>
+      <CssBaseline />
       Request
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel

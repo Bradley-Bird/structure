@@ -26,6 +26,6 @@ export async function signIn({ email, password }) {
   return parseData(resp);
 }
 
-export async function signOutUser() {
+export async function signOut() {
   return client.auth.signOut();
 }

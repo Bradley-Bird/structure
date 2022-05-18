@@ -11,20 +11,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useUser } from '../hooks/user';
 import { sections } from '../utils/NavLinks';
 
-// function Header() {
-//   const { user } = useUser();
-//   const headerDisplay = () => {
-//     return <Toolbar>{user.email}</Toolbar>;
-//   };
-
-//   return (
-//     <header>
-//       <AppBar>{headerDisplay()}</AppBar>
-//     </header>
-//   );
-// }
 function Header() {
-  const { user } = useUser();
+  const { user, signOutUser } = useUser();
   return (
     <>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -44,10 +32,14 @@ function Header() {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        {!user && (
+        {!user.email ? (
           <Button variant="outlined" size="small">
-            Sign in
+            <Link to="/auth/signIn" style={{ textDecoration: 'none' }}>
+              Sign in
+            </Link>
           </Button>
+        ) : (
+          <Button onClick={signOutUser}>Sign out</Button>
         )}
       </Toolbar>
       <Toolbar
@@ -56,16 +48,17 @@ function Header() {
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
         {sections.map((section) => (
-          <Link key={section.title} to={`/${section.title}`}>
-            <MuiLink
-              color="inherit"
-              noWrap
-              variant="body2"
-              sx={{ p: 1, flexShrink: 0 }}
-            >
+          <MuiLink
+            color="inherit"
+            noWrap
+            variant="body2"
+            sx={{ p: 1, flexShrink: 0 }}
+            key={section.title}
+          >
+            <Link key={section.title} to={`/${section.title}`}>
               {section.title}
-            </MuiLink>
-          </Link>
+            </Link>
+          </MuiLink>
         ))}
       </Toolbar>
     </>

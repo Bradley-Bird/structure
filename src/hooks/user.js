@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { UserContext } from '../context/UserContext';
-import { signUp, signIn, postProfileName } from '../services/auth.js';
+import { useHistory } from 'react-router-dom';
+import { signUp, signIn, postProfileName, signOut } from '../services/auth.js';
 
 export const useUser = () => {
+  const history = useHistory();
   const context = useContext(UserContext);
 
   if (context === undefined) {
@@ -25,6 +27,18 @@ export const useUser = () => {
       setUser(authUser.user);
     }
   };
+  const signOutUser = async () => {
+    await signOut();
+    setUser({});
+    history.push('/');
+  };
 
-  return { signInUser, signUpUser, user, setFirstName, setLastName };
+  return {
+    signInUser,
+    signUpUser,
+    user,
+    setFirstName,
+    setLastName,
+    signOutUser,
+  };
 };
