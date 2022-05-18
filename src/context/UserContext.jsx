@@ -1,17 +1,23 @@
 import { createContext, useContext, useState } from 'react';
-import { signUp, signIn } from '../services/auth.js';
+import { signUp, signIn, postProfileName } from '../services/auth.js';
 import { getUser } from '../services/auth';
+// import { Label } from '@mui/icons-material';
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const currentUser = getUser();
   const [user, setUser] = useState(currentUser || { user: {} });
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const signUpUser = async (email, password) => {
-    const authUser = await signUp({ email, password });
-    if (authUser) {
-      setUser(authUser.user);
+    const { user } = await signUp({ email, password });
+    if (user) {
+      setUser(user);
+      const { id } = user;
+      console.log('reached', id);
+      await postProfileName(firstName, lastName, id);
     }
   };
   const signInUser = async (email, password) => {
@@ -22,7 +28,18 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, signUpUser, signInUser }}>
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        signUpUser,
+        signInUser,
+        setFirstName,
+        firstName,
+        setLastName,
+        lastName,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -15,12 +15,12 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 
 function SignUp({ url }) {
-  const { signUpUser } = useUser();
+  const { signUpUser, firstName, setFirstName, lastName, setLastName } =
+    useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+
   const location = useLocation();
   const history = useHistory();
   function Copyright(props) {
@@ -32,7 +32,10 @@ function SignUp({ url }) {
         {...props}
       >
         {'Copyright © '}
-        <MuiLink color="inherit" href="https://mui.com/">
+        <MuiLink
+          color="inherit"
+          href="https://www.linkedin.com/in/bradley-bird/"
+        >
           Artsy
         </MuiLink>{' '}
         {new Date().getFullYear()}
@@ -82,6 +85,7 @@ function SignUp({ url }) {
                 id="first name"
                 label="First Name"
                 autoComplete="first name"
+                autoFocus
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               ></TextField>
@@ -107,7 +111,6 @@ function SignUp({ url }) {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

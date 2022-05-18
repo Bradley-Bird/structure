@@ -32,7 +32,10 @@ function SignIn({ url }) {
         {...props}
       >
         {'Copyright © '}
-        <MuiLink color="inherit" href="https://mui.com/">
+        <MuiLink
+          color="inherit"
+          href="https://www.linkedin.com/in/bradley-bird/"
+        >
           Artsy
         </MuiLink>{' '}
         {new Date().getFullYear()}
