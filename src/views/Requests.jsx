@@ -4,15 +4,12 @@ import React from 'react';
 
 function Requests() {
   const { requests } = useRequest();
-
-  console.log(requests);
   return (
     <div>
       <CssBaseline />
-      requests
-      {/* {requests.map((request) => (
-        <p key={request.id}>{request.id}</p>
-      ))} */}
+      {requests.map((request) => (
+        <p key={request.id}>{request.request}</p>
+      ))}
     </div>
   );
 }

@@ -10,8 +10,7 @@ export const useRequest = () => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await fetchRequests();
-      console.log(resp);
-      setRequests(resp);
+      setRequests(resp.body);
     };
     fetchData();
   }, []);

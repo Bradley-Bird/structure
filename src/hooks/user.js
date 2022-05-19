@@ -3,6 +3,9 @@ import { toast } from 'react-hot-toast';
 import { UserContext } from '../context/UserContext';
 import { useHistory } from 'react-router-dom';
 import { signUp, signIn, postProfileName, signOut } from '../services/auth.js';
+import { useEffect } from 'react';
+import { fetchProfileById } from '../services/profile';
+import { ContactPageSharp } from '@mui/icons-material';
 
 export const useUser = () => {
   const history = useHistory();
@@ -11,7 +14,8 @@ export const useUser = () => {
   if (context === undefined) {
     throw new Error('useUser must be used within a UserProvider');
   }
-  const { setUser, user, setFirstName, setLastName } = context;
+  const { profile, setProfile, setUser, user, setFirstName, setLastName } =
+    context;
   const signUpUser = async (email, password) => {
     const { user } = await signUp({ email, password });
     if (user) {
@@ -33,6 +37,15 @@ export const useUser = () => {
     history.push('/');
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = fetchProfileById(user.id);
+      console.log(resp);
+      setProfile(resp);
+    };
+    fetchData();
+  }, [user]);
+
   return {
     signInUser,
     signUpUser,
@@ -40,5 +53,6 @@ export const useUser = () => {
     setFirstName,
     setLastName,
     signOutUser,
+    profile,
   };
 };

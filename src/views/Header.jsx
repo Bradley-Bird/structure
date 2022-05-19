@@ -12,7 +12,7 @@ import { useUser } from '../hooks/user';
 import { sections } from '../utils/NavLinks';
 
 function Header() {
-  const { user, signOutUser } = useUser();
+  const { user, signOutUser, profile } = useUser();
   return (
     <>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -27,7 +27,7 @@ function Header() {
           noWrap
           sx={{ flex: 1 }}
         >
-          Welcome {user.email}!
+          Welcome {profile.firstName}!
         </Typography>
         <IconButton>
           <SearchIcon />
