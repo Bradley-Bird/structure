@@ -39,7 +39,8 @@ export const useUser = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = fetchProfileById(user.id);
+      console.log(user.id);
+      const resp = await fetchProfileById(user.id);
       console.log(resp);
       setProfile(resp);
     };
