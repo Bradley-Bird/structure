@@ -5,12 +5,13 @@ import { fetchRequests } from '../services/requests';
 
 export const useRequest = () => {
   const context = useContext(RequestContext);
-  const { requests, setRequests } = context;
+  const { requests, dispatch } = context;
 
   useEffect(() => {
     const fetchData = async () => {
       const resp = await fetchRequests();
-      setRequests(resp.body);
+      // setRequests(resp.body);
+      dispatch({ type: 'LOAD', payload: resp.body });
     };
     fetchData();
   }, []);
