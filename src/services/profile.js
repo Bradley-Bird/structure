@@ -1,6 +1,6 @@
-import { client } from './client';
+import { client, parseData } from './client';
 
 export async function getProfile(id) {
   const resp = await client.from('profile').match({ id }).single();
-  return resp;
+  return parseData(resp);
 }

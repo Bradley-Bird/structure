@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { UserProvider } from './context/UserContext';
 import { ThemeProvider, createTheme } from '@mui/material/';
+import { RequestProvider } from './context/RequestContext';
 
 export const theme = createTheme({
   palette: {
@@ -21,9 +22,11 @@ render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <Router>
-          <App />
-        </Router>
+        <RequestProvider>
+          <Router>
+            <App />
+          </Router>
+        </RequestProvider>
       </UserProvider>
     </ThemeProvider>
   </React.StrictMode>,
