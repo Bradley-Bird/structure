@@ -1,12 +1,10 @@
-import { CssBaseline } from '@mui/material';
-import React from 'react';
+import EntryForm from '../components/EntryForm';
 
 function CreateRequest() {
   return (
-    <div>
-      <CssBaseline />
-      createRequest
-    </div>
+    <>
+      <EntryForm />
+    </>
   );
 }
 
