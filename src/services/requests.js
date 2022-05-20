@@ -12,3 +12,8 @@ export async function postRequests(id, request) {
     .single();
   return parseData(resp);
 }
+
+export async function fetchRequestById(id) {
+  const resp = await client.from('requests').select().match({ id }).single();
+  return resp;
+}

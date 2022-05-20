@@ -6,8 +6,8 @@ import { fetchRequests, postRequests } from '../services/requests';
 import { useUser } from './user';
 
 export const useRequest = () => {
-  const history = useHistory();
   const { user } = useUser();
+  const history = useHistory();
   const context = useContext(RequestContext);
   const { requests, dispatch } = context;
 
