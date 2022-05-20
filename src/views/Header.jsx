@@ -48,17 +48,9 @@ function Header() {
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
         {sections.map((section) => (
-          <MuiLink
-            color="inherit"
-            noWrap
-            variant="body2"
-            sx={{ p: 1, flexShrink: 0 }}
-            key={section.title}
-          >
-            <Link key={section.title} to={`/${section.title}`}>
-              {section.title}
-            </Link>
-          </MuiLink>
+          <Link key={section.title} to={`/${section.title}`}>
+            {section.title}
+          </Link>
         ))}
       </Toolbar>
     </>

@@ -22,7 +22,7 @@ export const useRequest = () => {
     console.log(request);
     const id = user.id;
     const data = await postRequests(id, request);
-    console.log('data', data);
+    dispatch({ type: 'ADD', payload: data });
   };
 
   return { requests, handleRequestSubmit };

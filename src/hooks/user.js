@@ -20,7 +20,6 @@ export const useUser = () => {
     if (user) {
       setUser(user);
       const { id } = user;
-      console.log('reached', id);
       await postProfileName(firstName, lastName, id);
     }
   };
@@ -38,9 +37,7 @@ export const useUser = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(user.id);
       const resp = await fetchProfileById(user.id);
-      console.log(resp);
       setProfile(resp);
     };
     fetchData();
