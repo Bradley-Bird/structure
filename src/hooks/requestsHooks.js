@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { RequestContext } from '../context/RequestContext';
 import { fetchRequests, postRequests } from '../services/requests';
+import { useUser } from './user';
 
 export const useRequest = () => {
+  const { user } = useUser();
   const context = useContext(RequestContext);
   const { requests, dispatch } = context;
 
@@ -18,7 +20,8 @@ export const useRequest = () => {
 
   const handleRequestSubmit = async (request) => {
     console.log(request);
-    const data = await postRequests({ id: user.id, request: request });
+    const id = user.id;
+    const data = await postRequests(id, request);
     console.log('data', data);
   };
 

@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { signUp, signIn, postProfileName, signOut } from '../services/auth.js';
 import { useEffect } from 'react';
 import { fetchProfileById } from '../services/profile';
-import { ContactPageSharp } from '@mui/icons-material';
 
 export const useUser = () => {
   const history = useHistory();
