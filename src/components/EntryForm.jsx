@@ -9,8 +9,16 @@ import {
   Avatar,
 } from '@mui/material';
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
+import { useRequest } from '../hooks/requestsHooks';
+import { useState } from 'react';
 
 function EntryForm() {
+  const {handleRequestSubmit} = useRequest()
+const [value, setValue] = useState('')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await handleRequestSubmit(value)
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -30,7 +38,7 @@ function EntryForm() {
         </Typography>
         <Box
           component="form"
-          /*onSubmit={handleSubmit}*/ noValidate
+          onSubmit={handleSubmit} noValidate
           sx={{ mt: 1 }}
         >
           <TextField
@@ -39,8 +47,8 @@ function EntryForm() {
             multiline
             fullWidth
             rows={10}
-            // value={value}
-            // onChange={handleChange}
+            value={value}
+            onChange={(e)=> setValue(e.target.value)}
             variant="filled"
           />
           <Button

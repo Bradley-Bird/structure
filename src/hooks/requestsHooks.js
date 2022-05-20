@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { RequestContext } from '../context/RequestContext';
-import { fetchRequests } from '../services/requests';
+import { fetchRequests, postRequests } from '../services/requests';
 
 export const useRequest = () => {
   const context = useContext(RequestContext);
@@ -14,7 +14,12 @@ export const useRequest = () => {
       dispatch({ type: 'LOAD', payload: resp.body });
     };
     fetchData();
-  }, []);
+  }, [])
 
-  return { requests };
+  const handleRequestSubmit = async (request) => {
+    const data = await postRequests(request);
+    console.log('data',data)
+  }
+
+  return { requests, handleRequestSubmit };
 };
