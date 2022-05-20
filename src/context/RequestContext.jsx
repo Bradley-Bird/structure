@@ -9,6 +9,9 @@ function requestReducer(state, action) {
         id: request.id,
         request: request.request,
       }));
+    case 'ADD':
+      const { payload } = action;
+      return [{ id: payload.id, request: payload.request }, ...state];
 
     default:
       return state;

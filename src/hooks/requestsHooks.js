@@ -22,8 +22,8 @@ export const useRequest = () => {
 
   const handleRequestSubmit = async (request) => {
     console.log(request);
-    const id = user.id;
-    const data = await postRequests(id, request);
+    const uid = user.id;
+    const data = await postRequests(uid, request);
     dispatch({ type: 'ADD', payload: data });
   };
 

@@ -14,11 +14,11 @@ const useFormHooks = () => {
     e.preventDefault();
     try {
       handleRequestSubmit(value);
-      history.push('/requests');
     } catch (err) {
       toast.error(err);
       throw err;
     }
+    history.push('/requests');
   };
   return { handleChange, handleSubmit, value };
 };

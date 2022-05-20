@@ -8,6 +8,7 @@ export async function fetchRequests() {
 export async function postRequests(id, request) {
   const resp = await client
     .from('requests')
-    .insert({ user_id: id, request: request });
+    .insert({ user_id: id, request: request })
+    .single();
   return parseData(resp);
 }
