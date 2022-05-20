@@ -9,27 +9,11 @@ import {
   Avatar,
 } from '@mui/material';
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
-import { useRequest } from '../hooks/requestsHooks';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
+import useFormHooks from '../hooks/formHooks';
 
 function EntryForm() {
-  const { handleRequestSubmit } = useRequest();
-  const [value, setValue] = useState('');
+  const { handleChange, handleSubmit, value } = useFormHooks();
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      handleRequestSubmit(value);
-    } catch (err) {
-      toast.error(err);
-      throw err;
-    }
-  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
