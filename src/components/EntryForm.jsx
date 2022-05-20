@@ -13,12 +13,18 @@ import { useRequest } from '../hooks/requestsHooks';
 import { useState } from 'react';
 
 function EntryForm() {
-  const {handleRequestSubmit} = useRequest()
-const [value, setValue] = useState('')
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    await handleRequestSubmit(value)
-  }
+  const { handleRequestSubmit } = useRequest();
+  const [value, setValue] = useState(null);
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    handleRequestSubmit(value);
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -36,11 +42,7 @@ const [value, setValue] = useState('')
         <Typography component="h1" variant="h6">
           Add a Request
         </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit} noValidate
-          sx={{ mt: 1 }}
-        >
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             id="filled-multiline-flexible"
             label="Type here"
@@ -48,7 +50,7 @@ const [value, setValue] = useState('')
             fullWidth
             rows={10}
             value={value}
-            onChange={(e)=> setValue(e.target.value)}
+            onChange={handleChange}
             variant="filled"
           />
           <Button

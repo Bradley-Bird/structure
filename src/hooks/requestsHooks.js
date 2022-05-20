@@ -14,12 +14,13 @@ export const useRequest = () => {
       dispatch({ type: 'LOAD', payload: resp.body });
     };
     fetchData();
-  }, [])
+  }, []);
 
   const handleRequestSubmit = async (request) => {
-    const data = await postRequests(request);
-    console.log('data',data)
-  }
+    console.log(request);
+    const data = await postRequests({ id: user.id, request: request });
+    console.log('data', data);
+  };
 
   return { requests, handleRequestSubmit };
 };
