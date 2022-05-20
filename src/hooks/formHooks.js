@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { useRequest } from '../hooks/requestsHooks';
 
 const useFormHooks = () => {
+  const { history } = useRequest();
   const [value, setValue] = useState('');
   const { handleRequestSubmit } = useRequest();
   const handleChange = (event) => {
@@ -13,6 +14,7 @@ const useFormHooks = () => {
     e.preventDefault();
     try {
       handleRequestSubmit(value);
+      history.push('/requests');
     } catch (err) {
       toast.error(err);
       throw err;

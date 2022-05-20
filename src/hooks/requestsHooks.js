@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { RequestContext } from '../context/RequestContext';
 import { fetchRequests, postRequests } from '../services/requests';
 import { useUser } from './user';
 
 export const useRequest = () => {
+  const history = useHistory();
   const { user } = useUser();
   const context = useContext(RequestContext);
   const { requests, dispatch } = context;
@@ -25,5 +27,5 @@ export const useRequest = () => {
     dispatch({ type: 'ADD', payload: data });
   };
 
-  return { requests, handleRequestSubmit };
+  return { requests, handleRequestSubmit, history };
 };
