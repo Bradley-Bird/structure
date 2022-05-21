@@ -1,19 +1,45 @@
 import React from 'react';
-import { List, ListItem } from '@mui/material';
+import { Button, List, ListItem } from '@mui/material';
 import { useRequest } from '../hooks/requestsHooks';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useUser } from '../hooks/user';
 
 function ListLink() {
-  const { requests } = useRequest();
+  const { requests, setCopyOrEdit } = useRequest();
+  const { user } = useUser();
   return (
     <div>
-      {' '}
       <List>
         {requests.map((request) => (
-          <StyledLink to={`/requests/${request.id}`} key={request.id}>
-            <ListItem>{request.request}</ListItem>
-          </StyledLink>
+          <React.Fragment key={request.id}>
+            <StyledLink to={`/requests/${request.id}`}>
+              <ListItem>{request.request}</ListItem>
+            </StyledLink>
+            {user.id === request.user_id ? (
+              <Button
+                type="click"
+                value="edit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={(e) => setCopyOrEdit(e.target.value)}
+              >
+                edit
+              </Button>
+            ) : (
+              <Button
+                type="click"
+                value="copy"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={(e) => setCopyOrEdit(e.target.value)}
+              >
+                Copy
+              </Button>
+            )}
+          </React.Fragment>
         ))}
       </List>
     </div>

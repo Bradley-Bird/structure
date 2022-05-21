@@ -6,6 +6,7 @@ const useFormHooks = () => {
   const { history } = useRequest();
   const [value, setValue] = useState('');
   const { handleRequestSubmit } = useRequest();
+
   const handleChange = (event) => {
     setValue(event.target.value);
   };

@@ -1,4 +1,3 @@
-import React from 'react';
 import useRequestsById from '../hooks/requestsByIdHooks';
 
 function RequestCard() {
