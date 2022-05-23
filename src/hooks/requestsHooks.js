@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RequestContext } from '../context/RequestContext';
@@ -10,7 +10,7 @@ export const useRequest = () => {
   const history = useHistory();
   const context = useContext(RequestContext);
   const { requests, dispatch } = context;
-  const [copyOrEdit, setCopyOrEdit] = useState('');
+  // const [copyOrEdit, setCopyOrEdit] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +22,7 @@ export const useRequest = () => {
   }, []);
 
   const handleRequestSubmit = async (request) => {
-    console.log(request);
+    // console.log(request);
     const uid = user.id;
     const data = await postRequests(uid, request);
     dispatch({ type: 'ADD', payload: data });
@@ -35,8 +35,6 @@ export const useRequest = () => {
     requests,
     handleRequestSubmit,
     history,
-    copyOrEdit,
-    setCopyOrEdit,
     handleRequestEdit,
   };
 };

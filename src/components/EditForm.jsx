@@ -12,7 +12,7 @@ import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
 import useFormHooks from '../hooks/formHooks';
 import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
 
-function CopyEditForm() {
+function EditForm() {
   //getting ready to conditionally render this form with copyOrEditFormHooks
   const { handleChange, ceForm } = useCopyEditHooks();
 
@@ -33,7 +33,11 @@ function CopyEditForm() {
         <Typography component="h1" variant="h6">
           Add a Request
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          /*onSubmit={handleSubmit}*/ noValidate
+          sx={{ mt: 1 }}
+        >
           <TextField
             id="filled-multiline-flexible"
             label="Type here"
@@ -62,4 +66,4 @@ function CopyEditForm() {
   );
 }
 
-export default EntryForm;
+export default EditForm;

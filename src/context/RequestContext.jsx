@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useState } from 'react';
 const initialRequest = [];
 export const RequestContext = createContext();
 
@@ -30,8 +30,19 @@ function requestReducer(state, action) {
 
 export const RequestProvider = ({ children }) => {
   const [requests, dispatch] = useReducer(requestReducer, initialRequest);
+  const [copyOrEdit, setCopyOrEdit] = useState('');
+  const [ceForm, setCeForm] = useState('');
   return (
-    <RequestContext.Provider value={{ requests, dispatch }}>
+    <RequestContext.Provider
+      value={{
+        requests,
+        dispatch,
+        copyOrEdit,
+        setCopyOrEdit,
+        ceForm,
+        setCeForm,
+      }}
+    >
       {children}
     </RequestContext.Provider>
   );

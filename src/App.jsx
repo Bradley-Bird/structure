@@ -7,6 +7,7 @@ import { useUser } from './hooks/user';
 import Header from './views/Header';
 import Request from './views/Request';
 import CreateRequest from './views/CreateRequest';
+import { Edit } from '@mui/icons-material';
 export default function App() {
   const { user } = useUser();
   return (
@@ -26,7 +27,7 @@ export default function App() {
           <CreateRequest />
         </PrivateRoute>
         <PrivateRoute path="/edit">
-          <CreateRequest />
+          <Edit />
         </PrivateRoute>
         <Route path="/" component={Main} />
       </Switch>

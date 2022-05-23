@@ -4,7 +4,8 @@ import { getUser } from '../services/auth';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const currentUser = getUser();
+  const currentUser = user || getUser();
+  // console.log(currentUser);
   const [user, setUser] = useState(currentUser || { user: {} });
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -12,7 +13,7 @@ export const UserProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  // console.log(profile);
   return (
     <UserContext.Provider
       value={{

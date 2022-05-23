@@ -12,11 +12,13 @@ import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
 import useFormHooks from '../hooks/formHooks';
 import { useRequest } from '../hooks/requestsHooks';
 import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
+import { useContext } from 'react';
+import { RequestContext } from '../context/RequestContext';
 
 function EntryForm() {
   const { handleChange, handleSubmit, value } = useFormHooks();
-  const { copyOrEdit } = useRequest();
-  const { ceForm } = useCopyEditHooks();
+  const { copyOrEdit, ceForm } = useContext(RequestContext);
+  console.log(ceForm);
 
   return (
     <Container component="main" maxWidth="xs">

@@ -27,11 +27,14 @@ export const useUser = () => {
     setPassword,
     errorMessage,
     setErrorMessage,
+    firstName,
+    lastName,
   } = context;
   const signUpUser = async (email, password) => {
     const { user } = await signUp({ email, password });
     if (user) {
       setUser(user);
+      // console.log('user', user, firstName, lastName);
       const { id } = user;
       await postProfileName(firstName, lastName, id);
     }
@@ -49,14 +52,14 @@ export const useUser = () => {
   };
 
   useEffect(() => {
-    if (user.email) {
-      const fetchData = async () => {
-        const resp = await fetchProfileById(user.id);
-        setProfile(resp);
-      };
-      fetchData();
+    if (!user.email) {
+      return;
     }
-    return;
+    const fetchData = async () => {
+      const resp = await fetchProfileById(user.id);
+      setProfile(resp);
+    };
+    fetchData();
   }, [user]);
 
   return {

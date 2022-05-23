@@ -5,25 +5,25 @@ import styled from 'styled-components';
 import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
 import { useRequest } from '../hooks/requestsHooks';
 
-function StyledCopyButton(request) {
-  const { setId } = useCopyEditHooks();
-  const { setCopyOrEdit } = useRequest();
+function StyledCopyButton({ id }) {
+  const { handleClick } = useCopyEditHooks();
+  // const { setCopyOrEdit } = useRequest();
   return (
-    <StyledButtonLink onClick={() => setId(request.id)} to="/create">
+    <StyledButtonLink to="/create">
       <Button
         type="click"
         value="copy"
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
-        onClick={(e) => setCopyOrEdit(e.target.value)}
+        onClick={(e) => handleClick(e, id)}
       >
         Copy
       </Button>
     </StyledButtonLink>
   );
 }
-const StyledButtonLink = styled(Link)`
+export const StyledButtonLink = styled(Link)`
   color: white;
   text-decoration: none;
   display: flex;
