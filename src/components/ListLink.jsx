@@ -4,10 +4,13 @@ import { useRequest } from '../hooks/requestsHooks';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useUser } from '../hooks/user';
+import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
+import StyledCopyButton from './StyledCopyButton';
 
 function ListLink() {
   const { requests, setCopyOrEdit } = useRequest();
   const { user } = useUser();
+  const { setId } = useCopyEditHooks();
   return (
     <div>
       <List>
@@ -28,16 +31,7 @@ function ListLink() {
                 edit
               </Button>
             ) : (
-              <Button
-                type="click"
-                value="copy"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={(e) => setCopyOrEdit(e.target.value)}
-              >
-                Copy
-              </Button>
+              <StyledCopyButton request={request} />
             )}
           </React.Fragment>
         ))}
@@ -53,4 +47,5 @@ const StyledLink = styled(Link)`
   border-radius: 20px;
   display: flex;
 `;
+
 export default ListLink;

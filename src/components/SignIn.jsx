@@ -13,16 +13,22 @@ import {
   Button,
   Avatar,
 } from '@mui/material';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useUser } from '../hooks/user';
 
 function SignIn({ url }) {
-  const { signInUser } = useUser();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const location = useLocation();
-  const history = useHistory();
+  const {
+    signInUser,
+    setEmail,
+    setPassword,
+    setErrorMessage,
+    history,
+    location,
+    email,
+    password,
+    errorMessage,
+  } = useUser();
+
   function Copyright(props) {
     return (
       <Typography

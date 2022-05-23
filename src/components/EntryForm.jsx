@@ -10,9 +10,13 @@ import {
 } from '@mui/material';
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
 import useFormHooks from '../hooks/formHooks';
+import { useRequest } from '../hooks/requestsHooks';
+import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
 
 function EntryForm() {
   const { handleChange, handleSubmit, value } = useFormHooks();
+  const { copyOrEdit } = useRequest();
+  const { ceForm } = useCopyEditHooks();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -38,7 +42,7 @@ function EntryForm() {
             multiline
             fullWidth
             rows={10}
-            value={value}
+            value={copyOrEdit === 'copy' ? ceForm : value}
             onChange={handleChange}
             variant="filled"
           />

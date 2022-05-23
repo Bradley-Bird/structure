@@ -27,6 +27,16 @@ export const useRequest = () => {
     const data = await postRequests(uid, request);
     dispatch({ type: 'ADD', payload: data });
   };
+  const handleRequestEdit = async (Edit) => {
+    //need update
+  };
 
-  return { requests, handleRequestSubmit, history, copyOrEdit, setCopyOrEdit };
+  return {
+    requests,
+    handleRequestSubmit,
+    history,
+    copyOrEdit,
+    setCopyOrEdit,
+    handleRequestEdit,
+  };
 };

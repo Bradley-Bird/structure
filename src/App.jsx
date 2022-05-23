@@ -25,6 +25,9 @@ export default function App() {
         <PrivateRoute path="/create">
           <CreateRequest />
         </PrivateRoute>
+        <PrivateRoute path="/edit">
+          <CreateRequest />
+        </PrivateRoute>
         <Route path="/" component={Main} />
       </Switch>
     </>

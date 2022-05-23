@@ -9,6 +9,9 @@ export const UserProvider = ({ children }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [profile, setProfile] = useState({});
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   return (
     <UserContext.Provider
@@ -21,6 +24,12 @@ export const UserProvider = ({ children }) => {
         lastName,
         profile,
         setProfile,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        errorMessage,
+        setErrorMessage,
       }}
     >
       {children}
