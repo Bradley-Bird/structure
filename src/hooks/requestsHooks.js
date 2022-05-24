@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RequestContext } from '../context/RequestContext';
 import {
+  deleteRequestById,
   fetchRequests,
   postRequests,
   updateRequest,
@@ -41,8 +42,16 @@ export const useRequest = () => {
     dispatch({ type: 'UPDATE', payload: data });
     setCeForm('');
   };
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    await deleteRequestById(id);
+    history.replace('/requests');
+  };
+
   return {
     requests,
+    handleDelete,
     handleRequestSubmit,
     handleUpdateSubmit,
     history,

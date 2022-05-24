@@ -26,3 +26,9 @@ export async function fetchRequestById(id) {
   const resp = await client.from('requests').select().match({ id }).single();
   return resp;
 }
+
+export async function deleteRequestById(id) {
+  const resp = await client.from('requests').delete().match({ id }).single();
+  console.log(resp);
+  return parseData(resp);
+}

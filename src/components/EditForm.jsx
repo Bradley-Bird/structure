@@ -12,10 +12,20 @@ import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
 import { useContext } from 'react';
 import { RequestContext } from '../context/RequestContext';
 import useFormHooks from '../hooks/formHooks';
+import useRequestsById from '../hooks/requestsByIdHooks';
+import { useRequest } from '../hooks/requestsHooks';
+import { useUser } from '../hooks/user';
+import useCopyEditHooks from '../hooks/copyOrEditLinkHooks';
 
 function EditForm() {
   const { ceForm } = useContext(RequestContext);
   const { handleChange, handleUpdate } = useFormHooks();
+  const { id } = useRequestsById();
+  const { user } = useUser();
+  const { checkUser } = useCopyEditHooks();
+  const { handleDelete } = useRequest();
+
+  checkUser(user.id, id);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -50,7 +60,16 @@ function EditForm() {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Submit
+            Update
+          </Button>
+          <Button
+            onClick={(e) => handleDelete(e, id)}
+            type="delete"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Delete
           </Button>
           <Grid container>
             <Grid item></Grid>

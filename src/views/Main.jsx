@@ -5,7 +5,7 @@ function Main() {
   return (
     <div>
       <CssBaseline />
-      main
+      Artsy provides a place to request a piece of art
     </div>
   );
 }

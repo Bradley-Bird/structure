@@ -13,8 +13,7 @@ const useFormHooks = () => {
   const handleChange = (event) => {
     if (!ceForm) {
       setValue(event.target.value);
-    }
-    setCeForm(event.target.value);
+    } else setCeForm(event.target.value);
   };
   const handleUpdate = (e) => {
     e.preventDefault();

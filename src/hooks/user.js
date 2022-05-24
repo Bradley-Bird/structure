@@ -48,6 +48,7 @@ export const useUser = () => {
   const signOutUser = async () => {
     await signOut();
     setUser({});
+    setProfile({});
     history.push('/');
   };
 

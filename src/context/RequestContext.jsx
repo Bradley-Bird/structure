@@ -23,6 +23,9 @@ function requestReducer(state, action) {
         },
       ];
     case 'UPDATE':
+      return state.map((request) =>
+        request.id === payload.id ? payload : request
+      );
 
     default:
       return state;
