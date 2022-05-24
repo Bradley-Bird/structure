@@ -16,7 +16,6 @@ import { RequestContext } from '../context/RequestContext';
 function EntryForm() {
   const { handleChange, handleSubmit, value } = useFormHooks();
   const { copyOrEdit, ceForm } = useContext(RequestContext);
-  console.log(ceForm);
 
   return (
     <Container component="main" maxWidth="xs">

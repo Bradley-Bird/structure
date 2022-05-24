@@ -17,7 +17,6 @@ export const useRequest = () => {
 
   const { requests, dispatch, ceForm, setCeForm } = context;
   const { id } = useRequestsById();
-  console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {

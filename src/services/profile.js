@@ -1,4 +1,3 @@
-import { selectClasses } from '@mui/material';
 import { client, parseData } from './client';
 
 export async function fetchProfileById(id) {

@@ -3,6 +3,7 @@ const initialRequest = [];
 export const RequestContext = createContext();
 
 function requestReducer(state, action) {
+  const { payload } = action;
   switch (action.type) {
     case 'LOAD':
       return action.payload.map((request) => ({
@@ -12,7 +13,6 @@ function requestReducer(state, action) {
         created_at: request.created_at,
       }));
     case 'ADD':
-      const { payload } = action;
       return [
         ...state,
         {
