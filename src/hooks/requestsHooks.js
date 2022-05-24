@@ -9,7 +9,7 @@ export const useRequest = () => {
   const { user } = useUser();
   const history = useHistory();
   const context = useContext(RequestContext);
-  const { requests, dispatch } = context;
+  const { requests, dispatch, ceForm, setCeForm } = context;
   // const [copyOrEdit, setCopyOrEdit] = useState('');
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export const useRequest = () => {
     const uid = user.id;
     const data = await postRequests(uid, request);
     dispatch({ type: 'ADD', payload: data });
+    if (ceForm) setCeForm('');
   };
   const handleRequestEdit = async (Edit) => {
     //need update

@@ -10,7 +10,7 @@ import StyledCopyButton, { StyledButtonLink } from './StyledCopyButton';
 function ListLink() {
   const { requests, setCopyOrEdit } = useRequest();
   const { user } = useUser();
-  const { setId } = useCopyEditHooks();
+
   return (
     <div>
       <List>
@@ -27,7 +27,7 @@ function ListLink() {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                  onClick={(e) => setCopyOrEdit(e.target.value)}
+                  // onClick={(e) => setCopyOrEdit(e.target.value)}
                 >
                   edit
                 </Button>

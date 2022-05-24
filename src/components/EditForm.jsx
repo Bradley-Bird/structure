@@ -9,13 +9,8 @@ import {
   Avatar,
 } from '@mui/material';
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
-import useFormHooks from '../hooks/formHooks';
-import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
 
 function EditForm() {
-  //getting ready to conditionally render this form with copyOrEditFormHooks
-  const { handleChange, ceForm } = useCopyEditHooks();
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -35,7 +30,8 @@ function EditForm() {
         </Typography>
         <Box
           component="form"
-          /*onSubmit={handleSubmit}*/ noValidate
+          /*onSubmit={handleSubmit}*/
+          noValidate
           sx={{ mt: 1 }}
         >
           <TextField
@@ -44,8 +40,8 @@ function EditForm() {
             multiline
             fullWidth
             rows={10}
-            value={ceForm}
-            onChange={handleChange}
+            // value={ceForm}
+            // onChange={handleChange}
             variant="filled"
           />
           <Button

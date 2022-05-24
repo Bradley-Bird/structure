@@ -7,7 +7,7 @@ import { useUser } from './hooks/user';
 import Header from './views/Header';
 import Request from './views/Request';
 import CreateRequest from './views/CreateRequest';
-import { Edit } from '@mui/icons-material';
+import Edit from './views/Edit';
 export default function App() {
   const { user } = useUser();
   return (
