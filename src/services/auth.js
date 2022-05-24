@@ -9,7 +9,6 @@ export function getSession() {
 
 export async function signUp({ email, password }) {
   const resp = await client.auth.signUp({ email, password });
-  // console.log('resp', resp);
   return resp;
 }
 

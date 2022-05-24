@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { RequestContext } from '../context/RequestContext';
 import { fetchRequestById } from '../services/requests';
 
 const useRequestsById = () => {
   const { id } = useParams();
-  const [requestById, setRequestById] = useState({});
+  const { setLoading, setRequestById } = useContext(RequestContext);
 
-  useEffect(() => {
-    const fetchRequest = async () => {
-      const resp = await fetchRequestById(id);
-      setRequestById(resp.body);
-    };
-    fetchRequest();
-  }, [id]);
+  const handleCardClick = async (rId) => {
+    const resp = await fetchRequestById(rId);
+    console.log(resp);
+    setRequestById(resp.body);
+    setLoading(false);
+  };
 
-  return { requestById, id };
+  return { id, handleCardClick };
 };
 
 export default useRequestsById;

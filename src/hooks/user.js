@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { toast } from 'react-hot-toast';
 import { UserContext } from '../context/UserContext';
 import { useHistory, useLocation } from 'react-router-dom';
 import { signUp, signIn, postProfileName, signOut } from '../services/auth.js';
@@ -34,7 +33,7 @@ export const useUser = () => {
     const { user } = await signUp({ email, password });
     if (user) {
       setUser(user);
-      // console.log('user', user, firstName, lastName);
+
       const { id } = user;
       await postProfileName(firstName, lastName, id);
     }

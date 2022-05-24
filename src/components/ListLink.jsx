@@ -6,10 +6,12 @@ import styled from 'styled-components';
 import { useUser } from '../hooks/user';
 import useCopyEditHooks from '../hooks/copyOrEditLinkHooks';
 import StyledCopyButton, { StyledButtonLink } from './StyledCopyButton';
+import useRequestsById from '../hooks/requestsByIdHooks';
 
 function ListLink() {
   const { requests } = useRequest();
   const { handleClick } = useCopyEditHooks();
+  const { handleCardClick } = useRequestsById();
   const { user } = useUser();
 
   return (
@@ -17,7 +19,10 @@ function ListLink() {
       <List>
         {requests.map((request) => (
           <React.Fragment key={request.id}>
-            <StyledLink to={`/requests/${request.id}`}>
+            <StyledLink
+              to={`/requests/${request.id}`}
+              onClick={() => handleCardClick(request.id)}
+            >
               <ListItem>{request.request}</ListItem>
             </StyledLink>
             {user.id === request.user_id ? (

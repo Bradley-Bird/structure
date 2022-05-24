@@ -22,14 +22,12 @@ export const useRequest = () => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await fetchRequests();
-      // setRequests(resp.body);
       dispatch({ type: 'LOAD', payload: resp.body });
     };
     fetchData();
   }, []);
 
   const handleRequestSubmit = async (request) => {
-    // console.log(request);
     const uid = user.id;
     const data = await postRequests(uid, request);
     dispatch({ type: 'ADD', payload: data });
@@ -38,7 +36,6 @@ export const useRequest = () => {
 
   const handleUpdateSubmit = async (request) => {
     const data = await updateRequest(id, request);
-    console.log(data);
     dispatch({ type: 'UPDATE', payload: data });
     setCeForm('');
   };
@@ -47,7 +44,6 @@ export const useRequest = () => {
     e.preventDefault();
     const resp = await deleteRequestById(id);
     dispatch({ type: 'DELETE', payload: resp });
-    console.log(resp);
     history.replace('/requests');
   };
 

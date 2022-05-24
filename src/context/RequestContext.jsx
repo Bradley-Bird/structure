@@ -38,6 +38,8 @@ export const RequestProvider = ({ children }) => {
   const [requests, dispatch] = useReducer(requestReducer, initialRequest);
   const [copyOrEdit, setCopyOrEdit] = useState('');
   const [ceForm, setCeForm] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [requestById, setRequestById] = useState({});
   return (
     <RequestContext.Provider
       value={{
@@ -47,6 +49,10 @@ export const RequestProvider = ({ children }) => {
         setCopyOrEdit,
         ceForm,
         setCeForm,
+        loading,
+        setLoading,
+        requestById,
+        setRequestById,
       }}
     >
       {children}

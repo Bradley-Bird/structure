@@ -21,7 +21,6 @@ function Header() {
         </Link>
         <Typography
           component="h2"
-          // variant="h5"
           color="inherit"
           align="center"
           noWrap
