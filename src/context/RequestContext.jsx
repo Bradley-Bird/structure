@@ -26,6 +26,8 @@ function requestReducer(state, action) {
       return state.map((request) =>
         request.id === payload.id ? payload : request
       );
+    case 'DELETE':
+      return state.filter((request) => request.id !== payload.id);
 
     default:
       return state;

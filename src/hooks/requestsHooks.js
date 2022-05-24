@@ -45,7 +45,9 @@ export const useRequest = () => {
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
-    await deleteRequestById(id);
+    const resp = await deleteRequestById(id);
+    dispatch({ type: 'DELETE', payload: resp });
+    console.log(resp);
     history.replace('/requests');
   };
 
