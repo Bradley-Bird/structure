@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
+import useCopyEditHooks from '../hooks/copyOrEditLinkHooks';
 import { useRequest } from '../hooks/requestsHooks';
 
 function StyledCopyButton({ id }) {

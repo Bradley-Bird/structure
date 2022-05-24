@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { RequestContext } from '../context/RequestContext';
-import { useRequest } from '../hooks/requestsHooks';
+import { useRequest } from './requestsHooks';
 import { fetchRequestById } from '../services/requests';
 import useRequestsById from './requestsByIdHooks';
 
@@ -16,18 +16,9 @@ const useCopyEditHooks = () => {
     setCeForm(request);
   };
 
-  const handleEditClick = async (e, id) => {};
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const resp = await fetchRequestById(id);
-  //     setCeForm(resp);
-  //   };
-  //   fetchData;
-  // }, [id]);
-
-  const handleChange = (event) => {
-    setCeForm(event.target.value);
-  };
-  return { handleChange, handleClick };
+  // const handleChange = (event) => {
+  //   setCeForm(event.target.value);
+  // };
+  return { handleClick };
 };
 export default useCopyEditHooks;

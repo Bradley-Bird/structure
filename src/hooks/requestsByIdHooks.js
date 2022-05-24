@@ -14,7 +14,7 @@ const useRequestsById = () => {
     fetchRequest();
   }, [id]);
 
-  return { requestById };
+  return { requestById, id };
 };
 
 export default useRequestsById;

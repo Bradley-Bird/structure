@@ -22,6 +22,7 @@ function requestReducer(state, action) {
           created_at: payload.created_at,
         },
       ];
+    case 'UPDATE':
 
     default:
       return state;

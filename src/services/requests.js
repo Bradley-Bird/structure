@@ -13,6 +13,15 @@ export async function postRequests(id, request) {
   return parseData(resp);
 }
 
+export async function updateRequest(id, request) {
+  const resp = await client
+    .from('requests')
+    .update({ request: request })
+    .match({ id })
+    .single();
+  return parseData(resp);
+}
+
 export async function fetchRequestById(id) {
   const resp = await client.from('requests').select().match({ id }).single();
   return resp;

@@ -9,8 +9,13 @@ import {
   Avatar,
 } from '@mui/material';
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone';
+import { useContext } from 'react';
+import { RequestContext } from '../context/RequestContext';
+import useFormHooks from '../hooks/formHooks';
 
 function EditForm() {
+  const { ceForm } = useContext(RequestContext);
+  const { handleChange, handleUpdate } = useFormHooks();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -28,20 +33,15 @@ function EditForm() {
         <Typography component="h1" variant="h6">
           Add a Request
         </Typography>
-        <Box
-          component="form"
-          /*onSubmit={handleSubmit}*/
-          noValidate
-          sx={{ mt: 1 }}
-        >
+        <Box component="form" onSubmit={handleUpdate} noValidate sx={{ mt: 1 }}>
           <TextField
             id="filled-multiline-flexible"
             label="Type here"
             multiline
             fullWidth
             rows={10}
-            // value={ceForm}
-            // onChange={handleChange}
+            value={ceForm}
+            onChange={handleChange}
             variant="filled"
           />
           <Button

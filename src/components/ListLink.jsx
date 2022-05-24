@@ -4,11 +4,12 @@ import { useRequest } from '../hooks/requestsHooks';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useUser } from '../hooks/user';
-import useCopyEditHooks from '../hooks/copyOrEditFormHooks';
+import useCopyEditHooks from '../hooks/copyOrEditLinkHooks';
 import StyledCopyButton, { StyledButtonLink } from './StyledCopyButton';
 
 function ListLink() {
-  const { requests, setCopyOrEdit } = useRequest();
+  const { requests } = useRequest();
+  const { handleClick } = useCopyEditHooks();
   const { user } = useUser();
 
   return (
@@ -20,14 +21,14 @@ function ListLink() {
               <ListItem>{request.request}</ListItem>
             </StyledLink>
             {user.id === request.user_id ? (
-              <StyledButtonLink to="/edit">
+              <StyledButtonLink to={`/edit/${request.id}`}>
                 <Button
                   type="click"
                   value="edit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                  // onClick={(e) => setCopyOrEdit(e.target.value)}
+                  onClick={(e) => handleClick(e, request.id)}
                 >
                   edit
                 </Button>

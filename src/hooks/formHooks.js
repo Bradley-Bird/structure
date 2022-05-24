@@ -8,13 +8,23 @@ const useFormHooks = () => {
   const { history } = useRequest();
   const [value, setValue] = useState('');
   const { setCeForm, ceForm } = useContext(RequestContext);
-  const { handleRequestSubmit } = useRequest();
+  const { handleRequestSubmit, handleUpdateSubmit } = useRequest();
 
   const handleChange = (event) => {
     if (!ceForm) {
       setValue(event.target.value);
     }
     setCeForm(event.target.value);
+  };
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    try {
+      handleUpdateSubmit(ceForm);
+    } catch (err) {
+      toast.error(err);
+      throw err;
+    }
+    history.push('/requests');
   };
 
   const handleSubmit = (e) => {
@@ -27,6 +37,7 @@ const useFormHooks = () => {
     }
     history.push('/requests');
   };
-  return { handleChange, handleSubmit, value };
+  return { handleChange, handleSubmit, value, handleUpdate };
 };
+
 export default useFormHooks;
